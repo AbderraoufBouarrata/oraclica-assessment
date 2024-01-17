@@ -1,0 +1,16 @@
+For this exercise, you should be able be fetch data from an API endpoint and be able to process it using local state. 
+You can find more info at https://reactjs.org/docs/state-and-lifecycle.html
+
+Exercises:
+
+1. Connect the "Reset table and get new facts" button to the table and populate it.
+ - the API call is located at src/api/client.ts
+2. Connect the "Removed all unsaved facts from the table" button to the table.
+3. Connect the "Empty table" button to the table.
+4. Connect the "Sort alphabetically", "Sort by index", and "Shuffle rows" to the table.
+5. Connect the "Save" button to its row.
+ - When clicked, the button should switch to "Un-save".
+ - When clicked, the row should stay in the table when "Remove all unsaved facts
+ from the table" is clicked.
+ - When the "Un-save" button is clicked, it should switch back to "Save" and the row 
+ should now disappear when "Remove all unsaved facts from the table"  

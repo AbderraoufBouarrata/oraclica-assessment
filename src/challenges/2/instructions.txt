@@ -1,0 +1,29 @@
+For this exercise, you should be able to manipulate HTML elements using CSS.
+Suggested references: MDN is a generally good resource for CSS, but CSS Tricks is especially good for flexbox/grid layouts.
+https://developer.mozilla.org/en-US/
+https://css-tricks.com/
+
+
+Rules:
+Your work should be done in the stylesheet called style.css in this folder, unless otherwise stated.
+
+All CSS changes should target things in the Challenge 2 work area - the CSS selector for this is section.challenge2, but most of the elements have classes anyway so you can just use the class names.
+
+Feel free to request clarifications on what is being asked for, but if we're not being specific we will accept anything that accomplishes the stated objective.
+
+
+Exercises:
+1: 
+- Change the background color of the work area to light gray (don't worry about the specific color)
+- Change the font size of the work area to 1.5 times the normal font size without using px as a measurement
+- Change the font family of the work area to Verdana, using sans-serif fonts as a fallback.
+
+2. In the flexbox (className="flexbox"), make sure the spacing between elements is 24px.
+
+3: Use inline styles with React to make the div element with a class name of "inline" have green text with a font weight of 800. Use inline styles for this task only.
+
+4: Make the button with id "disabledStyledButton" have red text if it is disabled.
+
+5: Add styles to the grid (div with class name "grid") such that the grid has 2 rows and 3 columns. Add some spacing between the rows and columns.
+
+6: Make the form (div with class name "form") look as it does in the file "form.png" (which is in this folder).

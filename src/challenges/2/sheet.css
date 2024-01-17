@@ -1,0 +1,61 @@
+/* 
+  Don't change the styles right at the top of this file!
+  They're small style rules that are here for your reference.
+*/
+.flexbox {
+  display: "flex";
+}
+
+.grid {
+  display: "grid";
+}
+
+/* You can change or add any styles below this line. We've left
+   suggested selectors to help you out, but you don't have to use them, 
+   or you might have to modify them. If you see yellow squiggly lines, 
+   that's just your IDE warning you there's nothing in the rule, 
+   it won't break anything but you'll eventually fill them up. */
+
+section.challenge2 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 20px;
+  font-size: 1.5em;
+  font-family: "Verdana", "sans-serif";
+  background-color: lightgray;
+}
+
+.form {
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  font-family: "sans-serif";
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+/* used for the last task */
+.form * {
+  width: fit-content;
+}
+/* used for the last task */
+.chackbox-container {
+  display: flex;
+}
+
+.flexbox {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+#disabledStyledButton:disabled {
+  background-color: red;
+}
+
+.grid {
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-template-columns: repeat(3, auto);
+  gap: 10px;
+  grid-auto-flow: row; /* this is not correct because there are 2 rows and 3 cols, however there are x1 to x3 and y1 to y2 shouln't it be the opposite? x1 should represent the lines*/
+}
