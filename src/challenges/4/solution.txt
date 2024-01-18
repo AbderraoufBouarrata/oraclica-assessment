@@ -1,0 +1,79 @@
+CODE:
+
+function getCities(){
+    // GET request
+    return cities
+}
+function getLocations(){
+    // GET request
+    return locations
+}
+function getMusicians(){
+    // GET request
+    return musicians
+}
+
+function scheduleEvent(city, date){
+    const location = selectLocationFromCity(city, popularity) // not much information is provided on how the location is selected so I will just assume that the location is the highest ranking location in the city based on popularity
+    initialEventState = {
+        location,
+        date,
+       timeBlocks: [
+        {name: "morning", musician: null},
+        {name: "midday", musician: null},
+        {name: "afternoon", musician: null}
+       ]
+    }
+
+    musicians = getMusicians()
+    fillEventScheduleWithMusicians(event, musicians)
+
+    return event
+}
+
+function selectLocationFromCity(city, metric){
+    switch(metric){
+        case "popularity":
+        return city.locations.sort((a,b) => b.popularity - a.popularity)[0]
+        // other metric cases
+        default:
+            return city.locations[Math.floor(Math.random() * city.locations.length)]
+    }
+    // there could be no location available, but its not in our use case
+}
+
+function fillEventScheduleWithMusicians(event, musicians) {
+    const sortedByRank = sortMusiciansByRankDesc(musicians);
+    event.timeBlocks.forEach(timeBlock => {
+        sortedByRank.some(musician => {
+            const isMusicianAvailable = isMusicianAvailableForEvent(event, musician, timeBlock.name);
+            if (isMusicianAvailable) {
+                timeBlock.musician = musician;
+                return true;
+            }
+            return false;
+        });
+    });
+    // there could be no musician available, but its not in our use case
+}
+
+function sortMusiciansByRankDesc (musicians){ // the order here is descending because we always want the highest ranking to be the first picked
+    return musicians.sort((a,b) => b.rank - a.rank);
+} 
+
+function isMusicianAvailableForEvent(event, musician, timeBlock) {
+    const morningBlock = event.timeBlocks[0];
+    const middayBlock = event.timeBlocks[1];
+    const afternoonBlock = event.timeBlocks[2];
+
+    switch (timeBlock) {
+        case "morning":
+            return morningBlock.musician === null;
+        case "midday":
+            return middayBlock.musician === null && morningBlock.musician === null;
+        case "afternoon":
+            return afternoonBlock.musician === null;
+        default:
+            return false; // Invalid timeBlock
+    }
+}

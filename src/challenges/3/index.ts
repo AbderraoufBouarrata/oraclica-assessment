@@ -1,10 +1,3 @@
-/*
- * Challenge 3 - JavaScript/TypeScript Development
- * This challenge is broken into a series of small tasks.
- * In general, you want to add code to each function below to accomplish the stated task.
- * Your code must pass the associated tests - you can use "npm run test" to run the tests.
- */
-
 interface Employee {
   id: number;
   firstName: string;
@@ -51,70 +44,54 @@ const employees: Employee[] = [
   },
 ];
 
-//**********************************************************//
-//*
-//*  Goal: Order employees from the highest
-//*  rating to the lowest, highest being 5
-//*
-//**********************************************************//
+// Goal 1: Order employees from the highest rating to the lowest
 export const sortEmployeeByRating = (): Employee[] => {
-  return [];
+  const sortedEmployees = employees.slice().sort((a, b) => b.rating - a.rating);
+  return sortedEmployees;
 };
 
-//**********************************************************//
-//*
-//*  Goal: Get employee with the lowest rating. If ratings
-//*  change, the method should still be able to return the employee
-//*  with the lowest rating regardless of the previous data
-//*
-//**********************************************************//
+// Goal 2: Get employee with the lowest rating
 export const getEmployeeWithLowestRating = (): Employee => {
-  return employees[0];
+  const lowestRatedEmployee = employees.reduce(
+    (min, employee) => (employee.rating < min.rating ? employee : min),
+    employees[0]
+  );
+  return lowestRatedEmployee;
 };
 
-//**********************************************************//
-//*
-//*  Goal: Get average rating of all employees
-//*
-//**********************************************************//
+// Goal 3: Get average rating of all employees
 export const getTheAverageRatingForEmployees = (): number => {
-  return 0;
+  const totalRating = employees.reduce(
+    (sum, employee) => sum + employee.rating,
+    0
+  );
+  const averageRating = totalRating / employees.length || 0;
+  return averageRating;
 };
 
-//**********************************************************//
-//*
-//*  Goal: Get cities starting with New
-//*  Expected result: ['New Hampshire, New York', 'New Jersey']
-//*
-//**********************************************************//
+// Goal 4: Get cities starting with New
 export const getEmployeesCitiesStartingWithNew = (): string[] => {
-  return [];
+  const employeesCitiesStartingWithNew = employees
+    .map((employee) => employee.cities.filter((city) => city.startsWith("New")))
+    .flat();
+  return employeesCitiesStartingWithNew;
 };
 
-//**********************************************************//
-//*
-//*  Goal: Get all unique cities from employee cities
-//*
-//**********************************************************//
+// Goal 5: Get all unique cities from employee cities
 export const getEmployeesDistinctCities = (): string[] => {
-  return [];
+  const allCities = employees.flatMap((employee) => employee.cities);
+  const uniqueCities = Array.from(new Set(allCities));
+  return uniqueCities;
 };
 
-//**********************************************************//
-//*
-//*  Goal: Sort employees unique cities in a one liner
-//*
-//**********************************************************//
-export const sortEmployeesDistinctCities = (): string[] => {
-  return [];
-};
+// Goal 6: Sort employees unique cities in a one liner
+export const sortEmployeesDistinctCities = (): string[] =>
+  Array.from(new Set(employees.flatMap((employee) => employee.cities))).sort();
 
-//**********************************************************//
-//*
-//*  Goal: Get employee full name for a specific city
-//*  Expected result for New York: ['John Doe', 'Hulk Hogan'] in any order
-//*
-//**********************************************************//
+// Goal 7: Get employee full name for a specific city
 export const getEmployeesFullNameForCity = (city: string): string[] => {
-  return [];
+  const employee = employees
+    .filter((employee) => employee.cities.includes(city))
+    .map((employee) => `${employee.firstName} ${employee.lastName}`);
+  return employee;
 };

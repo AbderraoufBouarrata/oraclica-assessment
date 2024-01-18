@@ -17,15 +17,11 @@ export default function useFilterFacts(props: useFilterFactsProps) {
   const unsaveFact = (index: number) => {
     factsDispatcher({ type: "UNSAVE_FACT", index });
   };
-  //   const removeFact = (index: number) => {
-  //     factsDispatcher({ type: "REMOVE_FACT", index });
-  //   };
 
   return {
     removeAllUnsavedFacts,
     resetFacts,
     saveFact,
     unsaveFact,
-    // removeFact,
   };
 }

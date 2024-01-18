@@ -27,8 +27,8 @@ interface RemoveFactAction {
   index: number;
 }
 interface SetStateAction {
-  type: "SET_STATE";
-  newState: factsType;
+  type: "SET_FACTS";
+  facts: factsType;
 }
 export type FactAction =
   | ResetFactsAction

@@ -15,7 +15,8 @@ export default function useFacts() {
 
   const resetAndGetNewFacts = async (amount: number) => {
     if (amount < 0) return;
-    if (amount === 0) factsDispatcher({ type: "SET_FACTS", initialFacts });
+    if (amount === 0) return factsDispatcher({ type: "SET_FACTS", facts: [] });
+    if (!amount) return;
     try {
       setLoading(true);
       const result = await getFacts(amount);

@@ -1,5 +1,6 @@
 export const Challenge4 = () => {
   return (
+    // this dom nesting is unvalid in react, check console for errors
     <>
       <header>
         <h3>Challenge 4: Problem Solving and Software Design</h3>
