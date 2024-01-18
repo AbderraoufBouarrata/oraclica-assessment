@@ -30,13 +30,12 @@ section.challenge2 {
   flex-direction: column;
   font-family: "sans-serif";
   gap: 15px;
-  flex-wrap: wrap;
   padding: 10px;
+  font-weight: 500;
 }
 /* used for the last task */
 .form * {
   width: fit-content;
-  font-weight: 500;
 }
 /* used for the last task */
 .checkbox-container {
@@ -59,5 +58,5 @@ section.challenge2 {
   grid-template-rows: repeat(2, auto);
   grid-template-columns: repeat(3, auto);
   gap: 10px;
-  grid-auto-flow: row; /* this is not correct because there are 2 rows and 3 cols, however there are x1 to x3 and y1 to y2 shouln't it be the opposite? x1 should represent the lines*/
+  grid-auto-flow: row; /* this is not correct because there are 2 rows and 3 cols, however there are x1 to x3 and y1 to y2 shouln't it be the opposite? x should represent the lines*/
 }
