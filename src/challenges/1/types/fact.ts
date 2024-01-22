@@ -36,3 +36,8 @@ export type FactAction =
   | UnsaveFactAction
   | RemoveFactAction
   | SetStateAction;
+
+export enum sortingDirection {
+  ASC = "asc",
+  DESC = "desc",
+}

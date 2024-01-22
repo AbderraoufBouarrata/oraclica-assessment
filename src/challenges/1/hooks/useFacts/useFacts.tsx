@@ -25,11 +25,11 @@ export default function useFacts() {
         description,
         isSaved: false,
       }));
-      setLoading(false);
       factsDispatcher({ type: "SET_FACTS", facts });
     } catch (e) {
-      setLoading(false);
       throw new Error("Error fetching facts");
+    } finally {
+      setLoading(false);
     }
   };
 

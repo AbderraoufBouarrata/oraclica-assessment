@@ -1,6 +1,6 @@
-import { factsType } from "../../types/fact";
+import { FactAction, factsType } from "../../types/fact";
 
-export const factsReducer = (state: factsType, action: any): factsType => {
+export const factsReducer = (state: factsType, action: FactAction): factsType => {
   switch (action.type) {
     case "RESET_FACTS":
       localStorage.setItem("facts", JSON.stringify([]));

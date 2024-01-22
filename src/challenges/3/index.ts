@@ -46,7 +46,7 @@ const employees: Employee[] = [
 
 // Goal 1: Order employees from the highest rating to the lowest
 export const sortEmployeeByRating = (): Employee[] => {
-  const sortedEmployees = employees.slice().sort((a, b) => b.rating - a.rating);
+  const sortedEmployees = employees.slice().sort((a, b) => b.rating - a.rating); // we could also use  [...employees] instead of slice here, same result
   return sortedEmployees;
 };
 

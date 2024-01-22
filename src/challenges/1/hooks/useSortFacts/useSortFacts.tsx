@@ -1,46 +1,48 @@
 import React from "react";
 import { useSortFactsProps } from "./useSortFacts.types";
+import { sortingDirection } from "../../types/fact";
 
 export default function useSortFacts(props: useSortFactsProps) {
   const { facts, factsDispatcher } = props;
-  const [alphabeticalOrder, setAlphabeticalOrder] = React.useState<
-    "asc" | "desc"
-  >("asc");
-  const [indexOrder, setIndexOrder] = React.useState<"asc" | "desc">("asc");
+  const [alphabeticalOrder, setAlphabeticalOrder] =
+    React.useState<sortingDirection>(sortingDirection.ASC);
+  const [indexOrder, setIndexOrder] = React.useState<sortingDirection>(
+    sortingDirection.ASC
+  );
+
   const sortFactsAlphabetically = () => {
     let sortedFacts;
-    if (alphabeticalOrder === "asc") {
+    if (alphabeticalOrder === sortingDirection.ASC) {
       sortedFacts = facts.sort((a, b) =>
         a.description.localeCompare(b.description)
       );
-      setAlphabeticalOrder("desc");
+      setAlphabeticalOrder(sortingDirection.DESC);
     } else {
       sortedFacts = facts.sort((a, b) =>
         b.description.localeCompare(a.description)
       );
-      setAlphabeticalOrder("asc");
+      setAlphabeticalOrder(sortingDirection.ASC);
     }
     factsDispatcher({ type: "SET_FACTS", facts: sortedFacts });
   };
 
   const sortFactsByIndex = () => {
     let sortedFacts;
-    if (indexOrder === "asc") {
+    if (indexOrder === sortingDirection.ASC) {
       sortedFacts = facts.sort((a, b) => a.index - b.index);
-      setIndexOrder("desc");
+      setIndexOrder(sortingDirection.DESC);
     } else {
       sortedFacts = facts.sort((a, b) => b.index - a.index);
-      setIndexOrder("asc");
+      setIndexOrder(sortingDirection.ASC);
     }
     factsDispatcher({ type: "SET_FACTS", facts: sortedFacts });
   };
 
   const shuffleFacts = () => {
-    // Generate random index to swap elements
     const shuffledFacts = facts
-      .map((value) => ({ value, sort: Math.random() }))
-      .sort((a, b) => a.sort - b.sort)
-      .map(({ value }) => value);
+      .map((value) => ({ value, sort: Math.random() })) // Map each fact to an object with a random sort value
+      .sort((a, b) => a.sort - b.sort) // Sort the array of objects based on the random sort values
+      .map(({ value }) => value); // Extract the original facts from the sorted array of objects
 
     factsDispatcher({ type: "SET_FACTS", facts: shuffledFacts });
   };
